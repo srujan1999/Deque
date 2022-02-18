@@ -46,7 +46,7 @@ public class Deque<Item> implements Iterable<Item> {
         last = new Node();
         last.item = item;
         oldlast.next = oldlast;
-        n = n+1;
+        n+=1;
 
     }
 
