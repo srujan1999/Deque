@@ -113,8 +113,11 @@ public class Deque<Item> implements Iterable<Item> {
     public static void main(String[] args){
         Deque Deque1 = new Deque();
         Deque1.addFirst("MSK");
+        Deque1.addFirst("RAM");
+        Deque1.addFirst("SAI");
         System.out.println(Deque1.isEmpty());
         System.out.println(Deque1.size());
+        System.out.println(Deque1.removeLast());
         System.out.println(Deque1.removeLast());
         System.out.print(Deque1.size());
     }
