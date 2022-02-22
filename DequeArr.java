@@ -1,6 +1,7 @@
+//reference https://algs4.cs.princeton.edu/13stacks/ResizingArrayQueue.java.html//
 import java.util.*;
 public class DequeArr<Item> implements Iterable<Item>  {
-    private static final int INIT_CAPACITY = 2;
+    private static final int INIT_CAPACITY = 8;
 
     private Item[] q;       // queue elements
     private int n;          // number of elements on queue
@@ -53,7 +54,7 @@ public class DequeArr<Item> implements Iterable<Item>  {
     public void addLast(Item item)
     {
         if (n == q.length) resize(2*q.length);   // double size of array if necessary
-        q[last] = item;                        // add item
+        q[last++] = item;                        // add item
         if (last == q.length) last = 0;          // wrap-around
         n++;
     }
@@ -76,11 +77,12 @@ public class DequeArr<Item> implements Iterable<Item>  {
     {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item=q[last];
-        while(item==null){
-            item=q[last--];
+        while (item == null){
+            item = q[last--];
         }
         n--;
         last--;
+        // shrink size of array if necessary
         if (n > 0 && n == q.length/4) resize(q.length/2); 
         return item;
     }
@@ -106,13 +108,19 @@ public class DequeArr<Item> implements Iterable<Item>  {
         // Scanner scan = new Scanner(System.in);
         DequeArr Deque1 = new DequeArr();
         Deque1.addFirst("msk");
-        Deque1.addFirst("siddu1");
-        Deque1.addFirst("123");
-        System.out.println(Deque1.isEmpty());
+        Deque1.addLast("msk1");
+        Deque1.addFirst("msk2");
+        Deque1.addLast("msk3");
+        Deque1.addFirst("msk4");
+        Deque1.addLast("msk5");
         
         System.out.println(Deque1.size());
         System.out.println(Deque1.removeFirst());
-        // System.out.println(Deque1.removeLast());
+        System.out.println(Deque1.removeLast());
+        System.out.println(Deque1.removeFirst());
+        System.out.println(Deque1.removeLast());
+        System.out.println(Deque1.removeFirst());
+        System.out.println(Deque1.removeLast());
         System.out.print(Deque1.size());
     }
 
